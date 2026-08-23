@@ -1,5 +1,123 @@
-body{
-    font: bold 16px/1.5 "Helvetica Neue", sans-serif;
-    color: white;
-    background-color: black;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    background-color: #000;
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+
+    padding: 40px 25px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+
+    padding: 12px;
+
+    background-color: #111;
+    color: #fff;
+
+    border: 1px solid #333;
+    border-radius: 6px;
+
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: #666;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+button {
+    padding: 12px;
+
+    background-color: #fff;
+    color: #000;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.resultado {
+    margin-top: 30px;
+    padding: 20px;
+
+    background-color: #111;
+
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.resultado h2 {
+    margin-bottom: 15px;
+}
+
+.resultado p {
+    margin-bottom: 10px;
+}
+
+.erro {
+    margin-top: 30px;
+    padding: 15px;
+
+    background-color: #111;
+
+    border: 1px solid #555;
+    border-radius: 8px;
 }
