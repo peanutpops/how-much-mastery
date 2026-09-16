@@ -8,6 +8,12 @@ def getChampMasterybyPUUID(puuid: str, champID: int):
     response = requests.get(url)
     data = response.json()
 
+    if response.status_code == 404:
+        return (0, 0, 1800)
+
+    if not response.ok:
+        print("failed to search champ")
+
     return (
         data["championLevel"],
         data["championPoints"],
