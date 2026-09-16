@@ -94,6 +94,52 @@ button:hover {
     background-color: #ddd;
 }
 
+/* Container pai relativo */
+.autocomplete-container {
+    position: relative;
+}
+
+/* Lista suspensa */
+.autocomplete-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background-color: #1a1a1d;
+    border: 1px solid #333;
+    border-radius: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.autocomplete-items.hidden {
+    display: none;
+}
+
+.autocomplete-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+.autocomplete-item:hover {
+    background-color: #2d2d32;
+}
+
+.champ-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    object-fit: cover;
+}
+
 .resultado {
     margin-top: 30px;
     padding: 20px;

@@ -27,3 +27,14 @@ def treatChampName(champName: str):
 def getChampData(champName: str):
     champFullData = database["data"][treatChampName(champName).strip()]
     return champFullData["key"]
+
+def getAllChampionsForAutocomplete():
+    champions_data = database["data"]
+    champions_list = []
+    
+    for champ_info in champions_data.values():
+        champions_list.append({
+            "name": champ_info["name"],
+            "image_key": champ_info["id"]
+        })
+    return sorted(champions_list, key=lambda x: x["name"])
