@@ -1,169 +1,1048 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
 body {
+
     min-height: 100vh;
 
     background-color: #000;
+
     color: #fff;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow-x: hidden;
+
 }
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -3;
+
+    background-image:
+        url("./images/background-default.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    transform: scale(1.02);
+
+}
+
+
+/* =========================================================
+   BACKGROUND OVERLAY
+   ========================================================= */
+
+.background-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.86) 0%,
+            rgba(0, 0, 0, 0.72) 38%,
+            rgba(0, 0, 0, 0.40) 100%
+        );
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+
+    position: absolute;
+
+    top: 30px;
+
+    right: 5vw;
+
+    z-index: 10;
+
+}
+
+
+.developer {
+
+    color:
+        rgba(255, 255, 255, 0.55);
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
 
 .container {
-    width: 100%;
-    max-width: 500px;
 
-    padding: 40px 25px;
+    width: 100%;
+
+    min-height: 100vh;
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    padding:
+        120px 5vw 60px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(450px, 1fr)
+        minmax(450px, 1fr);
+
+    align-items: center;
+
+    gap: 80px;
+
 }
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.form-card {
+
+    width: 100%;
+
+    max-width: 680px;
+
+    padding: 45px;
+
+    background:
+        rgba(0, 0, 0, 0.60);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+    border-radius: 16px;
+
+    backdrop-filter: blur(6px);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0, 0, 0, 0.50);
+
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
 
 h1 {
-    text-align: center;
-    margin-bottom: 8px;
+
+    font-size:
+        clamp(35px, 4vw, 50px);
+
+    line-height: 1.1;
+
+    margin-bottom: 16px;
+
+    font-weight: 700;
+
 }
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
 
 .subtitle {
-    text-align: center;
-    color: #aaa;
 
-    margin-bottom: 30px;
+    max-width: 570px;
+
+    margin-bottom: 38px;
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
 }
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
 
 form {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 20px;
+
 }
+
+
+/* =========================================================
+   INPUT GROUP
+   ========================================================= */
 
 .input-group {
+
+    position: relative;
+
     display: flex;
+
     flex-direction: column;
+
     gap: 8px;
+
 }
 
-label {
-    font-size: 14px;
-}
 
-input {
-    width: 100%;
+.input-group label {
 
-    padding: 12px;
+    font-size: 12px;
 
-    background-color: #111;
-    color: #fff;
-
-    border: 1px solid #333;
-    border-radius: 6px;
-
-    font-size: 16px;
-}
-
-input::placeholder {
-    color: #666;
-}
-
-input:focus {
-    outline: none;
-    border-color: #fff;
-}
-
-button {
-    padding: 12px;
-
-    background-color: #fff;
-    color: #000;
-
-    border: none;
-    border-radius: 6px;
-
-    font-size: 16px;
     font-weight: bold;
 
-    cursor: pointer;
+    letter-spacing: 1.5px;
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
 }
 
-button:hover {
-    background-color: #ddd;
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.input-group input {
+
+    width: 100%;
+
+    height: 54px;
+
+    padding:
+        0 18px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.28);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background:
+        rgba(0, 0, 0, 0.42);
+
+    color: #fff;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
 }
 
-/* Container pai relativo */
+
+.input-group input::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.30);
+
+}
+
+
+.input-group input:focus {
+
+    border-color:
+        #25a9ff;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(37, 169, 255, 0.12);
+
+}
+
+
+/* =========================================================
+   AUTOCOMPLETE
+   ========================================================= */
+
 .autocomplete-container {
+
     position: relative;
+
 }
 
-/* Lista suspensa */
+
 .autocomplete-items {
+
     position: absolute;
-    top: 100%;
+
     left: 0;
+
     right: 0;
-    z-index: 99;
-    background-color: #1a1a1d;
-    border: 1px solid #333;
-    border-radius: 8px;
+
+    top: 100%;
+
+    margin-top: 5px;
+
+    z-index: 100;
+
     max-height: 220px;
+
     overflow-y: auto;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+
+    background:
+        rgba(8, 8, 12, 0.98);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.6);
+
 }
+
 
 .autocomplete-items.hidden {
+
     display: none;
+
 }
 
-.autocomplete-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
+
+.autocomplete-items div {
+
+    padding:
+        12px 16px;
+
+    color:
+        rgba(255, 255, 255, 0.80);
+
     cursor: pointer;
+
+    transition:
+        background 0.15s ease;
+
+}
+
+
+.autocomplete-items div:hover {
+
+    background:
+        rgba(37, 169, 255, 0.15);
+
     color: #fff;
-    transition: background-color 0.2s ease;
+
 }
 
-.autocomplete-item:hover {
-    background-color: #2d2d32;
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+form button {
+
+    height: 56px;
+
+    margin-top: 6px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        #168fff;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    transition:
+        background-color 0.35s ease;
+
 }
 
-.champ-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    border: 1px solid #fff;
-    object-fit: cover;
+
+form button:hover {
+
+    background-color:
+        #096dcc;
+
 }
 
-.resultado {
-    margin-top: 30px;
-    padding: 20px;
 
-    background-color: #111;
+form button:active {
 
-    border: 1px solid #333;
-    border-radius: 8px;
+    background-color:
+        #075ba9;
+
 }
 
-.resultado h2 {
+
+.search-icon {
+
+    font-size: 24px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   RESULT AREA
+   ========================================================= */
+
+.result-area {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   CHAMPION NAME
+   ========================================================= */
+
+.champion-name {
+
     margin-bottom: 15px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(34px, 4vw, 52px);
+
+    font-weight: 700;
+
+    text-shadow:
+        0 4px 20px
+        rgba(0, 0, 0, 0.8);
+
 }
 
-.resultado p {
-    margin-bottom: 10px;
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.champion-divider {
+
+    width: 300px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 15px 0 25px 0;
+
 }
+
+
+.champion-divider span {
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        rgba(255, 255, 255, 0.30);
+
+}
+
+
+.divider-icon {
+
+    flex: none !important;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    line-height: 0;
+
+    margin-top: -2px;
+
+}
+
+
+/* =========================================================
+   MASTERY PROGRESS
+   ========================================================= */
+
+.mastery-progress {
+
+    position: relative;
+
+    width: 330px;
+
+    height: 330px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 10px;
+
+}
+
+
+/* =========================================================
+   PROGRESS RING SVG
+   ========================================================= */
+
+.progress-ring-svg {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: 1;
+
+}
+
+
+.progress-ring-bg {
+
+    transition: stroke-dashoffset 0.35s ease;
+
+}
+
+
+.progress-ring-fill {
+
+    stroke-dasharray: 100;
+
+    stroke-dashoffset: calc(100 - var(--progress, 0));
+
+    transition: stroke-dashoffset 0.5s ease-in-out;
+
+    filter: drop-shadow(0 0 6px rgba(22, 143, 255, 0.4));
+
+}
+
+
+/* =========================================================
+   MASTERY ICON
+   ========================================================= */
+
+.mastery-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 130px;
+
+    height: 130px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.mastery-icon img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 10px 20px
+            rgba(0, 0, 0, 0.85)
+        );
+
+}
+
+
+/* =========================================================
+   LEVEL
+   ========================================================= */
+
+.mastery-level {
+
+    margin-top: -8px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 3px 10px
+        rgba(0, 0, 0, 0.7);
+
+}
+
+
+/* =========================================================
+   POINTS
+   ========================================================= */
+
+.mastery-points {
+
+    margin-top: 12px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 37px;
+
+    font-weight: bold;
+
+}
+
+
+.current-points {
+
+    color:
+        #20aaff;
+
+}
+
+
+.separator {
+
+    margin:
+        0 5px;
+
+    color:
+        rgba(255, 255, 255, 0.8);
+
+}
+
+
+.next-level-points {
+
+    color: #fff;
+
+}
+
+
+/* =========================================================
+   POINTS LABEL
+   ========================================================= */
+
+.points-label {
+
+    margin-top: 5px;
+
+    color:
+        rgba(255, 255, 255, 0.60);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   REMAINING CARD
+   ========================================================= */
+
+.remaining-card {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    min-height: 86px;
+
+    margin-top: 28px;
+
+    padding:
+        16px 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    text-align: left;
+
+    background:
+        rgba(0, 0, 0, 0.62);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+    border-radius: 12px;
+
+    backdrop-filter: blur(5px);
+
+}
+
+
+/* =========================================================
+   REMAINING ICON
+   ========================================================= */
+
+.remaining-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        2px solid
+        #25a9ff;
+
+    border-radius: 50%;
+
+    color:
+        #25a9ff;
+
+    font-size: 24px;
+
+}
+
+
+/* =========================================================
+   REMAINING TEXT
+   ========================================================= */
+
+.remaining-text {
+
+    display: flex;
+
+    align-items: baseline;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    font-size: 14px;
+
+}
+
+
+.remaining-text strong {
+
+    color:
+        #25a9ff;
+
+    font-size: 25px;
+
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
 
 .erro {
-    margin-top: 30px;
-    padding: 15px;
 
-    background-color: #111;
+    position: fixed;
 
-    border: 1px solid #555;
+    left: 50%;
+
+    bottom: 30px;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        14px 22px;
+
+    background:
+        rgba(0, 0, 0, 0.85);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
+
     border-radius: 8px;
+
+    color: #fff;
+
+    z-index: 200;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .container {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+        padding-top: 120px;
+
+    }
+
+
+    .form-card {
+
+        margin: auto;
+
+    }
+
+
+    .result-area {
+
+        padding-bottom: 50px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .header {
+
+        top: 20px;
+
+        right: 20px;
+
+    }
+
+
+    .developer {
+
+        display: none;
+
+    }
+
+
+    .container {
+
+        padding:
+            100px 20px 50px;
+
+    }
+
+
+    .form-card {
+
+        padding:
+            30px 22px;
+
+    }
+
+
+    h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .subtitle {
+
+        font-size: 15px;
+
+    }
+
+
+    .mastery-progress {
+
+        width: 270px;
+
+        height: 270px;
+
+    }
+
+
+    .mastery-icon {
+
+        width: 100px;
+
+        height: 100px;
+
+    }
+
+
+    .champion-name {
+
+        font-size: 35px;
+
+    }
+
+
+    .mastery-points {
+
+        font-size: 30px;
+
+    }
+
+
+    .remaining-card {
+
+        max-width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   AUTOCOMPLETE - CHAMPION ICONS
+   ========================================================= */
+
+.autocomplete-items div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 8px 12px;
+
+    min-height: 48px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease;
+
+}
+
+
+.autocomplete-items div img {
+
+    width: 32px;
+
+    height: 32px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 4px;
+
+}
+
+
+.autocomplete-items div span {
+
+    font-size: 14px;
+
+}
+
+
+.autocomplete-items div:hover {
+
+    background-color:
+        rgba(37, 169, 255, 0.15);
+
 }
