@@ -48,7 +48,7 @@
                 >
             </div>
 
-            <div class="input-group">
+            <div class="input-group autocomplete-container">
                 <label for="champion">champion</label>
 
                 <input
@@ -56,8 +56,11 @@
                     id="champion"
                     name="champion"
                     placeholder="ex: tristana"
+                    autocomplete="off"
                     required
                 >
+
+                <div id="custom-autocomplete-list" class="autocomplete-items hidden"></div>
             </div>
 
             <button type="submit">
@@ -110,6 +113,13 @@
         {% endif %}
 
     </main>
+
+    <script 
+        id="champions-data" 
+        type="application/json"
+    >{{ champNameList | tojson | safe }}</script>
+
+    <script src="{{ url_for('static', filename='autocomplete.js') }}"></script>
 
 </body>
 </html>

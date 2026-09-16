@@ -1,15 +1,18 @@
 from flask import Flask, render_template, request
 
 from services.get_lol_puuid import getSummonerPuuid
-from services.get_championData import getChampData
+from services.get_championData import getChampData, getAllChampionsForAutocomplete
 from services.get_champ_mastery import getChampMasterybyPUUID
 
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def homepage():
+    champNameList = getAllChampionsForAutocomplete()
+
     if request.method == "GET":
-        return render_template("index.html")
+        return render_template("index.html", champNameList=champNameList)
+    
     if request.method == "POST":
         riotId = request.form.get("riot_id", "").strip()
         tagLine = request.form.get("tagline", "").strip()
@@ -30,7 +33,11 @@ def homepage():
                 "mastery_points": championPoints,
                 "points_remaining": pointsUntilNextLevel
             }
-            return render_template("index.html", resultado=result_data)
+            return render_template(
+                "index.html", 
+                resultado=result_data,
+                champNameList=champNameList
+                )
         except Exception as e:
             return render_template("index.html", error=str(e))
 
