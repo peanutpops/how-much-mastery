@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>how much mastery</title>
 
@@ -10,116 +16,324 @@
         rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}"
     >
+
 </head>
+
 
 <body>
 
+    <!-- =====================================================
+         BACKGROUND
+         ===================================================== -->
+
+    <div
+        class="background"
+        {% if resultado and resultado.background %}
+            style="background-image: url('{{ resultado.background }}');"
+        {% endif %}
+    ></div>
+
+    <div class="background-overlay"></div>
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="header">
+
+        <div class="developer">
+            developed by peanutpop
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
     <main class="container">
 
-        <h1>how much mastery?</h1>
 
-        <p class="subtitle">
-            lp? ofc not! let's talk about REAL stats: mastery!
-        </p>
+        <!-- =================================================
+             FORM
+             ================================================= -->
 
-        <form method="POST" action="/">
+        <section class="form-card">
 
-            <div class="input-group">
-                <label for="riot_id">riot ID</label>
+            <h1>
+                How Much Mastery?
+            </h1>
 
-                <input
-                    type="text"
-                    id="riot_id"
-                    name="riot_id"
-                    placeholder="ex: kalec"
-                    required
-                >
-            </div>
+            <p class="subtitle">
+                LP? KDA? Let's talk about REAL stats
+            </p>
 
-            <div class="input-group">
-                <label for="tagline">tagline</label>
 
-                <input
-                    type="text"
-                    id="tagline"
-                    name="tagline"
-                    placeholder="Ex: br1"
-                    required
-                >
-            </div>
+            <form method="POST" action="/">
 
-            <div class="input-group autocomplete-container">
-                <label for="champion">champion</label>
 
-                <input
-                    type="text"
-                    id="champion"
-                    name="champion"
-                    placeholder="ex: tristana"
-                    autocomplete="off"
-                    required
-                >
+                <!-- RIOT ID -->
 
-                <div id="custom-autocomplete-list" class="autocomplete-items hidden"></div>
-            </div>
+                <div class="input-group">
 
-            <button type="submit">
-                check it
-            </button>
+                    <label for="riot_id">
+                        RIOT ID
+                    </label>
 
-        </form>
+                    <input
+                        type="text"
+                        id="riot_id"
+                        name="riot_id"
+                        placeholder="ex: kalec"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TAGLINE -->
+
+                <div class="input-group">
+
+                    <label for="tagline">
+                        TAGLINE
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tagline"
+                        name="tagline"
+                        placeholder="ex: br1"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CHAMPION -->
+
+                <div class="input-group autocomplete-container">
+
+                    <label for="champion">
+                        CHAMPION
+                    </label>
+
+                    <input
+                        type="text"
+                        id="champion"
+                        name="champion"
+                        placeholder="ex: tristana"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <div
+                        id="custom-autocomplete-list"
+                        class="autocomplete-items hidden"
+                    ></div>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button type="submit">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
+                    check it
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- =================================================
+             RESULT
+             ================================================= -->
 
         {% if resultado %}
 
-        <section class="resultado">
+        <section class="result-area">
 
-            <h2>results</h2>
 
-            <p>
-                <strong>summoner:</strong>
-                {{ resultado.riot_id }}#{{ resultado.tagline }}
-            </p>
+            <!-- CHAMPION -->
 
-            <p>
-                <strong>champion:</strong>
+            <h2 class="champion-name">
                 {{ resultado.champion }}
-            </p>
+            </h2>
 
-            <p>
-                <strong>mastery level:</strong>
-                {{ resultado.mastery_level }}
-            </p>
 
-            <p>
-                <strong>mastery points:</strong>
-                {{ resultado.mastery_points }}
-            </p>
+            <!-- DIVIDER -->
 
-            <p>
-                <strong>points until next level:</strong>
-                {{ resultado.points_remaining }}
-            </p>
+            <div class="champion-divider">
+
+                <span></span>
+
+                <span class="divider-icon">
+                    ✦
+                </span>
+
+                <span></span>
+
+            </div>
+
+
+            <!-- =================================================
+                 MASTERY CIRCLE (SVG + ÚNICO ÍCONE)
+                 ================================================= -->
+
+            <div class="mastery-progress">
+
+                <svg class="progress-ring-svg" viewBox="0 0 120 120">
+                    <path
+                        class="progress-ring-bg"
+                        d="M 20 90 A 45 45 0 1 1 100 90"
+                        fill="none"
+                        stroke="rgba(5, 7, 12, 0.85)"
+                        stroke-width="8"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        class="progress-ring-fill"
+                        d="M 20 90 A 45 45 0 1 1 100 90"
+                        fill="none"
+                        stroke="#168fff"
+                        stroke-width="8"
+                        stroke-linecap="round"
+                        pathLength="100"
+                        style="--progress: {{ resultado.progress_percent }};"
+                    />
+                </svg>
+
+                <div class="mastery-icon">
+                    <img
+                        src="{{ url_for('static', filename='images/mastery-' ~ (resultado.mastery_level if resultado.mastery_level <= 7 else 7) ~ '.png') }}"
+                        alt="Mastery level {{ resultado.mastery_level }}"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 LEVEL
+                 ================================================= -->
+
+            <div class="mastery-level">
+
+                Level {{ resultado.mastery_level }}
+
+            </div>
+
+
+            <!-- =================================================
+                 POINTS
+                 ================================================= -->
+
+            <div class="mastery-points">
+
+                <span class="current-points">
+                    {{ resultado.mastery_points }}
+                </span>
+
+                <span class="separator">
+                    /
+                </span>
+
+                <span class="next-level-points">
+
+                    {{
+                        resultado.mastery_points
+                        + resultado.points_remaining
+                    }}
+
+                </span>
+
+            </div>
+
+
+            <div class="points-label">
+                MASTERY POINTS
+            </div>
+
+
+            <!-- =================================================
+                 REMAINING
+                 ================================================= -->
+
+            <div class="remaining-card">
+
+                <div class="remaining-icon">
+                    ↑
+                </div>
+
+                <div class="remaining-text">
+
+                    <span>
+                        You need
+                    </span>
+
+                    <strong>
+                        {{ resultado.points_remaining }}
+                    </strong>
+
+                    <span>
+                        points until the next level.
+                    </span>
+
+                </div>
+
+            </div>
+
 
         </section>
 
         {% endif %}
+
+
+        <!-- =================================================
+             ERROR
+             ================================================= -->
 
         {% if erro %}
 
-        <section class="erro">
-            {{ erro }}
-        </section>
+            <section class="erro">
+
+                {{ erro }}
+
+            </section>
 
         {% endif %}
 
+
     </main>
 
-    <script 
-        id="champions-data" 
+
+    <!-- =====================================================
+         CHAMPION DATA
+         ===================================================== -->
+
+    <script
+        id="champions-data"
         type="application/json"
     >{{ champNameList | tojson | safe }}</script>
 
-    <script src="{{ url_for('static', filename='autocomplete.js') }}"></script>
+
+    <script
+        src="{{ url_for('static', filename='autocomplete.js') }}"
+    ></script>
+
 
 </body>
+
 </html>

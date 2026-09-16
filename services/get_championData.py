@@ -25,8 +25,17 @@ def treatChampName(champName: str):
     return "".join(word.capitalize() for word in clean_name.split())
 
 def getChampData(champName: str):
-    champFullData = database["data"][treatChampName(champName).strip()]
-    return champFullData["key"]
+    formatted_name = treatChampName(champName)
+    
+    if formatted_name in database["data"]:
+        champFullData = database["data"][formatted_name]
+        
+        numeric_key = int(champFullData["key"])
+        text_id = champFullData["id"]
+        
+        return numeric_key, text_id
+        
+    return None, None
 
 def getAllChampionsForAutocomplete():
     champions_data = database["data"]
